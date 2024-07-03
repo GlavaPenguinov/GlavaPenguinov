@@ -18,7 +18,7 @@
 ### :man_technologist: About Me :
 I am a Developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> from Ukraine.
 
-- 📘 I am currently studying in the 10th grade 
+- 📘 I am currently studying in the 8th grade 
 
 - :zap: In my free time, I am constantly learning something new and trying to find a section in programming that interests me
 
