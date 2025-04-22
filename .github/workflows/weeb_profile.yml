@@ -1,45 +1,42 @@
 name: WeebProfile
 on:
-# 🦀 Schedule
-schedule: [{ cron: "0 0 * * *" }] # Everyday at 00:00 UTC
-# 💡 The following line lets you run workflow manually from the action tab!
-workflow_dispatch:
-# 🚀 Push event
+  schedule: [{ cron: "0 0 * * *" }]
+  workflow_dispatch:
+
 jobs:
   weeb_profile:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-      - name: 🦀 LastFM & Github 🦀
+      - name: 🦀 Github 🦀
         uses: LucasHenriqueDiniz/WeebProfile@main
         with:
-          FILENAME: LastFM.svg
-          GIST_ID: ${{ secrets.GIST_ID }}
-          GH_TOKEN: ${{ secrets.WEEB_GH_TOKEN }}
+          FILENAME: Github.svg
+          GIST_ID: 8aacc3d1ccca110d8358e35517d8fe40
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           STORAGE_METHOD: gist
-          STYLE: default
-          SIZE: half
-
-          PLUGIN_LASTFM: true
-          PLUGIN_LASTFM_HIDE_HEADER: true
-          PLUGIN_LASTFM_USERNAME: Amayacrab
-          PLUGIN_LASTFM_SECTIONS: recent_tracks, top_artists_grid, top_albums_grid
-
+          
           PLUGIN_GITHUB: true
-          PLUGIN_GITHUB_HIDE_HEADER: true
           PLUGIN_GITHUB_USERNAME: LucasHenriqueDiniz
-          PLUGIN_GITHUB_SECTIONS: favorite_languages
-
-      - name: 🦀 MyAnimeList 🦀
+          PLUGIN_GITHUB_SECTIONS: profile, favorite_languages, code_habits
+          
+      - name: 🦀 LastFM & MyAnimeList 🦀
         uses: LucasHenriqueDiniz/WeebProfile@main
         with:
           FILENAME: MyAnimeList.svg
-          GIST_ID: ${{ secrets.GIST_ID }}
-          GH_TOKEN: ${{ secrets.WEEB_GH_TOKEN }}
+          GIST_ID: 8aacc3d1ccca110d8358e35517d8fe40
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           STORAGE_METHOD: gist
-          SIZE: half
-          STYLE: default
-
-          PLUGIN_MAL: true
-          PLUGIN_MAL_HIDE_HEADER: true
-          PLUGIN_MAL_USERNAME: Amayacrab
-          PLUGIN_MAL_SECTIONS: statistics_simple, character_simple_favorites, anime_favorites
+          
+          PLUGIN_LASTFM: true
+          PLUGIN_LASTFM_USERNAME: Amayacrab
+          PLUGIN_LASTFM_SECTIONS: recent_tracks
+          PLUGIN_LASTFM_RECENT_TRACKS_MAX: 5
+          
+          PLUGIN_MYANIMELIST: true
+          PLUGIN_MYANIMELIST_USERNAME: Amayacrab
+          PLUGIN_MYANIMELIST_SECTIONS: character_simple_favorites, anime_favorites 
+          PLUGIN_MYANIMELIST_ANIME_FAVORITES_MAX: 3
+          PLUGIN_MYANIMELIST_CHARACTER_FAVORITES_MAX: 5
+          PLUGIN_MYANIMELIST_CHARACTER_FAVORITES_TITLE: "Waifus"
